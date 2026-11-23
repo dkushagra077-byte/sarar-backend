@@ -16,7 +16,7 @@ module.exports = {
   FRONTEND_URL: process.env.FRONTEND_URL || (NODE_ENV === 'production' ? 'https://sarar-frontend.vercel.app' : 'http://localhost:3000'),
   CORS_ORIGINS: Array.from(new Set([
     ...(process.env.CORS_ORIGINS || '').split(',').map(origin => origin.trim()).filter(Boolean),
-    ...(NODE_ENV === 'production' ? ['https://sarar-frontend.vercel.app'] : [])
+    'https://sarar-frontend.vercel.app'
   ])),
   TRUST_PROXY: process.env.TRUST_PROXY || (NODE_ENV === 'production' ? '1' : '0'),
   SUPABASE_URL: process.env.SUPABASE_URL || '',
