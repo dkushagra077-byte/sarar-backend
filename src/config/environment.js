@@ -13,8 +13,11 @@ if (NODE_ENV === 'production' && (!JWT_SECRET || JWT_SECRET === 'sarar-industrie
 module.exports = {
   NODE_ENV,
   PORT: process.env.PORT || 5000,
-  FRONTEND_URL: process.env.FRONTEND_URL || process.env.RENDER_EXTERNAL_URL || (NODE_ENV === 'production' ? '' : 'http://localhost:3000'),
-  CORS_ORIGINS: (process.env.CORS_ORIGINS || '').split(',').map(origin => origin.trim()).filter(Boolean),
+  FRONTEND_URL: process.env.FRONTEND_URL || (NODE_ENV === 'production' ? 'https://sarar-frontend.vercel.app' : 'http://localhost:3000'),
+  CORS_ORIGINS: Array.from(new Set([
+    ...(process.env.CORS_ORIGINS || '').split(',').map(origin => origin.trim()).filter(Boolean),
+    ...(NODE_ENV === 'production' ? ['https://sarar-frontend.vercel.app'] : [])
+  ])),
   TRUST_PROXY: process.env.TRUST_PROXY || (NODE_ENV === 'production' ? '1' : '0'),
   SUPABASE_URL: process.env.SUPABASE_URL || '',
   SUPABASE_SECRET_KEY: process.env.SUPABASE_SECRET_KEY || '',

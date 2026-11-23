@@ -1,4 +1,4 @@
-﻿# SARAR INDUSTRIES Backend
+# SARAR INDUSTRIES Backend
 
 Express API for the SARAR INDUSTRIES website. It stores brands, products, users, and customer enquiries in Supabase.
 
@@ -21,3 +21,7 @@ Create the initial administrator once with `ADMIN_EMAIL` and a temporary unique 
 Set the service root directory to the repository root, build command to `npm ci`, and start command to `npm start`. Configure `NODE_ENV=production`, `SUPABASE_URL`, `SUPABASE_SECRET_KEY`, `SUPABASE_STORAGE_BUCKET=product-media`, a generated `JWT_SECRET`, and `FRONTEND_URL` to the website origin. Render provides `PORT` automatically. Set additional allowed website origins in `CORS_ORIGINS` when needed.
 
 Never commit `.env` or server secrets.
+
+## Production frontend origin
+
+The production site is https://sarar-frontend.vercel.app. In production, the backend allows this origin for CORS and uses it as the default FRONTEND_URL. Set FRONTEND_URL explicitly in Render if you use a different domain.
